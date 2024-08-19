@@ -24,6 +24,7 @@ public class Review {
     public Review(String gadgetName, String gadgetType, String features, int price, int userRating, String userReviewComment, GadgetCategory gadgetCategory ){
         this.gadgetCategory = gadgetCategory;
         this.gadgetName = gadgetName;
+        this.gadgetType = gadgetType;
         this.features = features;
         this.price = price;
         this.userRating = userRating;
@@ -32,12 +33,11 @@ public class Review {
     public String getGadgetName(){
         return gadgetName;
     }
+    public String getGadgetType() { return gadgetType;}
     public String getFeatures(){
         return features;
     }
-    public int getPrice(){
-        return price;
-    }
+    public int getPrice(){ return price;}
     public int getUserRating(){
         return userRating;
     }
@@ -50,12 +50,14 @@ public class Review {
     public Long getId() {
         return id;
     }
+
     @Override
     public String toString() {
         return "Review{" +
                 "id=" + id +
                 ", gadgetCategory='" + gadgetCategory + '\'' +
                 ", gadgetName='" + gadgetName + '\'' +
+                ", gadgetType='" + gadgetType + '\'' +
                 ", features='" + features + '\'' +
                 ", price='" + price + '\'' +
                 ", userRating='" + userRating + '\'' +
@@ -69,11 +71,19 @@ public class Review {
         Review review = (Review) o;
         return id == review.id &&
                 Objects.equals(gadgetName, review.gadgetName) &&
+                Objects.equals(gadgetType, review.gadgetType) &&
                 Objects.equals(features, review.features) &&
                 Objects.equals(price, review.price) &&
                 Objects.equals(userRating, review.userRating) &&
                 Objects.equals(userReviewComment, review.userReviewComment) &&
                 Objects.equals(gadgetCategory, review.gadgetCategory);
     }
+//    @Override
+//    public int hashcode() {
+//        return Objects.hash(id, gadgetName, gadgetType, features, price, userRating, userReviewComment, gadgetCategory);
+//    }
+
+
+
 
 }

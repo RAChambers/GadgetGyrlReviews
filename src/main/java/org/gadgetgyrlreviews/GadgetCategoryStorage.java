@@ -1,6 +1,5 @@
 package org.gadgetgyrlreviews;
 
-import java.security.Provider;
 import java.util.*;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +15,8 @@ public class GadgetCategoryStorage {
     public GadgetCategory findGadgetCategoryByGadgetType(String gadgetType) {
         return gadgetCategoryRepo.findByGadgetType(gadgetType);
     }
-    public GadgetCategory findGadgetCategoryById(long id) {
+    GadgetCategory findGadgetCategoryById(long id){
+
         Optional<GadgetCategory> gadgetCategoryOptional = gadgetCategoryRepo.findById(id);
         GadgetCategory retrievedGadgetCategory;
         if (gadgetCategoryOptional.isEmpty()) {

@@ -15,14 +15,21 @@ public class GadgetCategory {
     @OneToMany(mappedBy = "gadgetCategory")
     private Collection<Review> reviews;
 
-
     protected GadgetCategory(){
+    }
+
+    public GadgetCategory(String gadgetType) {
+        this.gadgetType = gadgetType;
     }
     public Long getId() {
         return id;
     }
+
     public String getGadgetType(){
         return gadgetType;
+    }
+    public Collection<Review> getReviews() {
+        return reviews;
     }
     @Override
     public boolean equals(Object o) {
@@ -45,6 +52,12 @@ public class GadgetCategory {
                 ", reviews=" + reviews +
                 '}';
     }
+//    @Override
+//    public int hashcode(){
+//        int result = (int) (id^(id>>>32));
+//        result = 31*result + (gadgetType != null ? gadgetType.hashCode() :0);
+//        return result;
+//    }
 
 }
 
