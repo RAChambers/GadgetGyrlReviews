@@ -1,7 +1,7 @@
 package org.gadgetgyrlreviews;
 
 import javax.persistence.*;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 public class Review {
@@ -18,6 +18,9 @@ public class Review {
     @ManyToOne
     private GadgetCategory gadgetCategory;
 
+    @ManyToMany
+    private Collection<HashTag> hashTags;
+
     protected Review(){
 
     }
@@ -29,6 +32,7 @@ public class Review {
         this.price = price;
         this.userRating = userRating;
         this.userReviewComment = userReviewComment;
+        this.hashTags = new HashSet<>(hashTags);
     }
     public String getGadgetName(){
         return gadgetName;
@@ -50,6 +54,7 @@ public class Review {
     public Long getId() {
         return id;
     }
+    public Collection<HashTag> getHashTags(){ return hashTags;}
 
     @Override
     public String toString() {
@@ -83,7 +88,9 @@ public class Review {
 //        return Objects.hash(id, gadgetName, gadgetType, features, price, userRating, userReviewComment, gadgetCategory);
 //    }
 
-
+    public void addHashTag(HashTag hashTagToAdd) {
+        hashTags.add(hashTagToAdd);
+    }
 
 
 }
